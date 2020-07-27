@@ -1,0 +1,63 @@
+GET http://localhost:3003/api/blogs
+### 
+
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+   "title" : "Logging with Papertrail",
+    "author" : "Papertrail",
+    "url" : "https://www.papertrail.com/plans/",
+    "likes" : "5"
+}
+   
+   
+     
+
+### 
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+[{
+   "title" : "Logging with Graylog",
+    "author" : "Graylog",
+    "url" : "https://www.graylog.org/products/open-source-vs-enterprise",
+    "likes" : "0"
+},
+{
+    "title" : "Logging with Papertrail",
+    "author" : "Papertrail",
+    "url" : "https://www.papertrail.com/plans/",
+    "likes" : "5"
+}]
+   
+   
+     
+
+### 
+
+GET http://localhost:3001/info
+### 
+GET http://localhost:3001/api/persons
+### 
+GET http://localhost:3001/api/persons/5f0c3d700aa05723f0dc5cbd
+### 
+GET http://localhost:3001/api/persons/1
+### 
+DELETE http://localhost:3001/api/persons/5f0c760a4e307f6e74ef2437
+### 
+POST http://localhost:3001/api/persons  
+content-type: application/json
+
+{
+    "name" : "Gi",
+    "number" : "0042 84 84 48 75"
+}
+###
+PUT http://localhost:3001/api/persons/5f0c759e95b79931e4a5221b
+content-type: application/json
+
+{
+    "name" : "Gica Hagi Maradona",
+    "number" : "0042 84 84 48 75"
+}
