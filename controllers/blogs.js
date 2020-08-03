@@ -1,23 +1,34 @@
 const blogRouter = require('express').Router();
 const Blog = require('../models/blog');
 
-blogRouter.get('/', (request, response) => {
-  Blog.find({})
-    .then((blogs) => {
-      response.json(blogs);
-    })
-    .catch((error) => {
-      console.log('error connecting to MongoDB:', error.message);
-      response.status(404).end();
-    });
+blogRouter.get('/', async (request, response) => {
+  const blogs = await Blog.find({});
+
+  if (blogs) {
+    response.json(blogs);
+  } else {
+    response.status(404).end();
+  }
 });
 
-blogRouter.post('/', (request, response) => {
-  const blog = new Blog(request.body);
+blogRouter.post('/', async (request, response) => {
+  const body = request.body;
 
-  blog.save().then((result) => {
-    response.status(201).json(result);
+  if (body.url === undefined || body.title === undefined) {
+    return response.status(404).json({
+      error: 'bad request',
+    });
+  }
+  
+  const newBlog = new Blog({
+    name: body.name,
+    title: body.title,
+    url: body.url,
+    likes: body.likes || 0
   });
+
+  const savedBlog = await newBlog.save();
+  response.json(savedBlog);
 });
 
 module.exports = blogRouter;
