@@ -4,7 +4,7 @@ const Blog = require('../models/blog');
 const jwt = require('jsonwebtoken');
 
 blogRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('user', { name: 1, username: 1});
+  const blogs = await Blog.find({}).populate('user', { name: 1, username: 1 });
 
   if (blogs) {
     response.json(blogs);
@@ -15,7 +15,7 @@ blogRouter.get('/', async (request, response) => {
 
 blogRouter.post('/', async (request, response) => {
   const body = request.body;
-  
+
   const decodedToken = jwt.verify(request.token, process.env.secret);
 
   if (!request.token || !decodedToken.id) {
@@ -23,6 +23,11 @@ blogRouter.post('/', async (request, response) => {
   }
 
   const user = await User.findById(decodedToken.id);
+  if (!user) {
+    return response
+      .status(404)
+      .json({ error: 'blog has no user with this token' + decodedToken.id });
+  }
 
   if (body.url === undefined || body.title === undefined) {
     return response.status(404).json({
@@ -61,11 +66,28 @@ blogRouter.put('/:id', async (request, response) => {
 });
 
 blogRouter.delete('/:id', async (request, response) => {
-  const blog = await Blog.findByIdAndRemove(request.params.id);
-  if (blog) {
-    response.json(blog);
+  const blog = await Blog.findById(request.params.id);
+  if (!blog) {
+    return response.status(404).json({ error: 'can not find the blog' });
+  }
+
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+
+  if (!request.token || !decodedToken.id) {
+    return response.status(404).json({ error: 'token missing or invalid' });
+  }
+
+  const user = await User.findById(decodedToken.id);
+
+  if (!user) {
+    return response.status(404).json({ error: 'can not find the user' });
+  }
+
+  if (blog.user.toString() === user._id.toString()) {
+    const blogRemoved = await Blog.findByIdAndRemove(blog.id);
+    response.json(blogRemoved);
   } else {
-    response.status(404).end;
+    return response.status(401).json({ error: 'unauthorized access' });
   }
 });
 

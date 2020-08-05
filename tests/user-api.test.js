@@ -15,6 +15,10 @@ beforeEach(async () => {
   await user.save();
 });
 
+const auth =
+  'bearer bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFhZDllODRlYTU0NjQ5NGY2ODkzYyIsImlhdCI6MTU5NjYzNjQwOH0.dSBcxffJfTWZSdoUebjr9q6gNGz3PvjLhy7yQZRTJDU';
+
+
 describe('when there is initially one user in db', () => {
   test('creation succeeds with a fresh username', async () => {
     const usersAtStart = await helper.usersInDb();
@@ -27,6 +31,7 @@ describe('when there is initially one user in db', () => {
 
     await api
       .post('/api/users')
+      .set({ 'Authorization': auth, Accept: 'application/json' })
       .send(newUser)
       .expect(200)
       .expect('Content-Type', /application\/json/);
@@ -53,6 +58,7 @@ describe('when there is initially one user in db', () => {
 
     const result = await api
       .post('/api/users')
+      .set({ 'Authorization': auth, Accept: 'application/json' })
       .send(newUser)
       .expect(400)
       .expect('Content-Type', /application\/json/);

@@ -1,70 +1,74 @@
 GET http://localhost:3003/api/blogs
-# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFhZDllODRlYTU0NjQ5NGY2ODkzYyIsImlhdCI6MTU5NjYzNjQwOH0.dSBcxffJfTWZSdoUebjr9q6gNGz3PvjLhy7yQZRTJDU
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFkMjdjYjUwNzhkNWQ3Yzk3ZDdlNCIsImlhdCI6MTU5NjY0MTk4NH0.u428g4h7JkUMXkKrTYiDEojtACjLQZIxDlqMEo0BKRY
 # Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpcnZhbmRyZWkiLCJpZCI6IjVmMjkxODRlYzA3NjI0NTRiOGJlNzMxMiIsImlhdCI6MTU5NjYzOTk4Nn0.NuXVmI27DFxygf3eKwnn7O6HCUJhuhS-L6Eec9FCouY
 
 ### 
 
 POST http://localhost:3003/api/blogs
 content-type: application/json
-# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFhZDllODRlYTU0NjQ5NGY2ODkzYyIsImlhdCI6MTU5NjYzNjQwOH0.dSBcxffJfTWZSdoUebjr9q6gNGz3PvjLhy7yQZRTJDU
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpcnZhbmRyZWkiLCJpZCI6IjVmMjkxODRlYzA3NjI0NTRiOGJlNzMxMiIsImlhdCI6MTU5NjYzOTk4Nn0.NuXVmI27DFxygf3eKwnn7O6HCUJhuhS-L6Eec9FCouY
-
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFhZDllODRlYTU0NjQ5NGY2ODkzYyIsImlhdCI6MTU5NjYzNjQwOH0.dSBcxffJfTWZSdoUebjr9q6gNGz3PvjLhy7yQZRTJDU
 
 {
-   "title" : "Logging with Andrei",
+    "title" : "Root created ",
     "author" : "Papertrail",
     "url" : "https://www.papertrail.com/plans/",
     "likes" : "5"
 }
    
 
+# [{
+#    "title" : "Logging with Graylog",
+#     "author" : "Graylog",
+#     "url" : "https://www.graylog.org/products/open-source-vs-enterprise",
+#     "likes" : "0"
+# },
+# {
+#     "title" : "Logging with Papertrail",
+#     "author" : "Papertrail",
+#     "url" : "https://www.papertrail.com/plans/",
+#     "likes" : "5"
+# }]
+   
+   
 ### 
-POST http://localhost:3003/api/blogs
+
+DELETE http://localhost:3003/api/blogs/5f2ad2dab5078d5d7c97d7e6
 content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFkMjdjYjUwNzhkNWQ3Yzk3ZDdlNCIsImlhdCI6MTU5NjY0MTk4NH0.u428g4h7JkUMXkKrTYiDEojtACjLQZIxDlqMEo0BKRY
 # Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFhZDllODRlYTU0NjQ5NGY2ODkzYyIsImlhdCI6MTU5NjYzNjQwOH0.dSBcxffJfTWZSdoUebjr9q6gNGz3PvjLhy7yQZRTJDU
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpcnZhbmRyZWkiLCJpZCI6IjVmMjkxODRlYzA3NjI0NTRiOGJlNzMxMiIsImlhdCI6MTU5NjYzOTk4Nn0.NuXVmI27DFxygf3eKwnn7O6HCUJhuhS-L6Eec9FCouY
 
-
-[{
-   "title" : "Logging with Graylog",
-    "author" : "Graylog",
-    "url" : "https://www.graylog.org/products/open-source-vs-enterprise",
-    "likes" : "0"
-},
-{
-    "title" : "Logging with Papertrail",
-    "author" : "Papertrail",
-    "url" : "https://www.papertrail.com/plans/",
-    "likes" : "5"
-}]
-   
-   
-     
-
-### 
-
-GET http://localhost:3001/info
-### 
-GET http://localhost:3001/api/persons
-### 
-GET http://localhost:3001/api/persons/5f0c3d700aa05723f0dc5cbd
-### 
-GET http://localhost:3001/api/persons/1
-### 
-DELETE http://localhost:3001/api/persons/5f0c760a4e307f6e74ef2437
-### 
-POST http://localhost:3001/api/persons  
-content-type: application/json
-
-{
-    "name" : "Gi",
-    "number" : "0042 84 84 48 75"
-}
-###
-PUT http://localhost:3001/api/persons/5f0c759e95b79931e4a5221b
-content-type: application/json
-
-{
-    "name" : "Gica Hagi Maradona",
-    "number" : "0042 84 84 48 75"
-}
+ 
+#   {
+#     "title": "Logging with Papertrail",
+#     "url": "https://www.papertrail.com/plans/",
+#     "likes": 5,
+#     "user": {
+#       "username": "pirvandrei",
+#       "name": "Andrei",
+#       "id": "5f29184ec0762454b8be7312"
+#     },
+#     "id": "5f2acd68e52498806c2f4968"
+#   },
+#   {
+#     "title": "Root created ",
+#     "url": "https://www.papertrail.com/plans/",
+#     "likes": 5,
+#     "user": {
+#       "name": "root",
+#       "username": "root",
+#       "id": "5f2ad27cb5078d5d7c97d7e4"
+#     },
+#     "id": "5f2ad2dab5078d5d7c97d7e6"
+#   },
+#   {
+#     "title": "Root created ",
+#     "url": "https://www.papertrail.com/plans/",
+#     "likes": 5,
+#     "user": {
+#       "username": "pirvandrei",
+#       "name": "Andrei",
+#       "id": "5f29184ec0762454b8be7312"
+#     },
+#     "id": "5f2ad3be70b1928b18f2aecf"
+#   }
+# ]
