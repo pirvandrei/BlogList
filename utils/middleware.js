@@ -3,8 +3,11 @@ const logger = require('./logger');
 const requestLogger = (request, response, next) => {
   logger.info('Method:', request.method);
   logger.info('Path:  ', request.path);
+  logger.info('Header ', request.rawHeaders);
   logger.info('Body:  ', request.body);
+
   logger.info('---');
+
   next();
 };
 
@@ -27,10 +30,13 @@ const errorHandler = (error, request, response, next) => {
 const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization');
 
-  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
-    request.token = authorization.substring(7);
+  
+  if (authorization) {
+    if (authorization.toLowerCase().startsWith('bearer ')) {
+      request.token = authorization.substring(7);
+    }
   } else {
-    response.status(401).send({ error: 'invalid token' });
+    return response.status(401).send({ error: 'invalid token' });
   }
 
   next();
