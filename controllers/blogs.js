@@ -67,8 +67,7 @@ blogRouter.delete('/:id', async (request, response) => {
   if (!blog) {
     return response.status(404).json({ error: 'can not find the blog' });
   }
-
-  // const token = getTokenFrom(request);
+ 
   const decodedToken = jwt.verify(request.token, process.env.SECRET);
 
   if (!request.token || !decodedToken.id) {
