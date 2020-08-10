@@ -10,7 +10,7 @@
     "build:ui": "rm -rf build && cd ../BlogListApp && npm run build --prod && cp -r build ../BlogList/",
     "deploy": "git push",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
-    "logs:prod": "heroku logs -a BlogList"
+    "logs:prod": "heroku logs -a bloglistappapi"
   },
   "repository": {
     "type": "git",
