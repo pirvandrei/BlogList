@@ -15,7 +15,5 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBpc
 } 
 
 
-#   "token": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFlNmQ4ZjdjNWEyN2ExODU4YWQ1MyIsImlhdCI6MTU5NjY0NzE3N30.Oy9-Amu-vTTjq8mXgHHk9cZIf7FyhzMG_kcklMo_Hw0",
-#   "username": "root",
-#   "name": "root"
-# }
+
+  

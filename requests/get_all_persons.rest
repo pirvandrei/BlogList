@@ -28,8 +28,20 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb
 #     "url" : "https://www.papertrail.com/plans/",
 #     "likes" : "5"
 # }]
-   
-   
+
+### 
+
+PUT http://localhost:3003/api/blogs/5f2acd68e52498806c2f4968
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVmMmFlNmQ4ZjdjNWEyN2ExODU4YWQ1MyIsImlhdCI6MTU5NzA0NzMwMX0.qTKq626SqSNPR76xlx3x96Ljm9hCzTrvmD8xUvX3kik
+
+{ 
+    "title" : "Root created ",
+    "author" : "Papertrail",
+    "url" : "https://www.papertrail.com/plans/",
+    "likes" : "5"
+} 
+
 ### 
 
 DELETE http://localhost:3003/api/blogs/5f2ad2dab5078d5d7c97d7e6
